@@ -20,15 +20,17 @@ function sleep(ms) {
 
 async function getLinks() {
     let hrefs = new Set();
-    let links = document.querySelectorAll(".Nnq7C a");
-    let loadingSpinner = document.querySelector(".W1Bne");
+    let linksSelector = ".Nnq7C a"
+    let loadingSpinnerSelector = ".By4nA"
+    let links = document.querySelectorAll(linksSelector);
+    let loadingSpinner = document.querySelector(loadingSpinnerSelector);
     do {
         for (i = 0; i < links.length; i++) {
             hrefs.add(links[i].href);
         }
         window.scrollTo(0, document.body.scrollHeight);
-        links = document.querySelectorAll(".Nnq7C a");
-        loadingSpinner = document.querySelector(".W1Bne");
+        links = document.querySelectorAll(linksSelector);
+        loadingSpinner = document.querySelector(loadingSpinnerSelector);
         await sleep(1500);
     } while (loadingSpinner);
     return hrefs;
